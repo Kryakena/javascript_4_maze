@@ -1,6 +1,7 @@
 # 🎨Алгоритм создания лабиринта🎨
 
-![maze1](https://github.com/user-attachments/assets/66ccaed5-0fd4-4301-b7c5-69763c232bb1)
+![2024-12-05_21-10-15](https://github.com/user-attachments/assets/07764a65-466c-4365-b803-8958f2d73d83)
+
 
 1. создаем HTML, CSS, JS документ
 

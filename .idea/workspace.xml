@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e15be89c-0034-433b-8c93-8eb003bb655e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Maze_JS.js" beforeDir="false" afterPath="$PROJECT_DIR$/Maze_JS.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/face.png" beforeDir="false" afterPath="$PROJECT_DIR$/face.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maze1.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +81,7 @@
       <updated>1733415830160</updated>
       <workItem from="1733415831232" duration="5615000" />
       <workItem from="1733484531968" duration="13749000" />
-      <workItem from="1733578570681" duration="289000" />
+      <workItem from="1733578570681" duration="1536000" />
     </task>
     <servers />
   </component>

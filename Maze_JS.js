@@ -47,17 +47,17 @@ function processKey(e) {
     dx = 0;
     dy = 0;
 
-    if (e.keyCode == 50) { //стрелка вверх - код 38
-        dy = -1;
-    }
-    if (e.keyCode == 53) { //стрелка вниз - код 40
-        dy = 1;
-    }
-    if (e.keyCode == 56) { //стрелка влево - код 37
+    if (e.keyCode == 38) { //стрелка вверх - код 38, -1
         dx = -1;
     }
-    if (e.keyCode == 59) { //стрелка вправо - код 39
+    if (e.keyCode == 40) { //стрелка вниз - код 40, 1
         dx = 1;
+    }
+    if (e.keyCode == 37) { //стрелка влево - код 37, -1
+        dy = -1;
+    }
+    if (e.keyCode == 39) { //стрелка вправо - код 39, 1
+        dy = 1;
     }
 }
 
@@ -97,7 +97,7 @@ function checkCollisions() {
             return true;
         }
 
-        if (red == 170 && green == 170 && blue == 170) {
+        if (red == 169 && green == 169 && blue == 169) {
             return true;
         }
     }

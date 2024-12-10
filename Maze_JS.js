@@ -9,23 +9,23 @@ var dy = 0;
 
 var timer;
 
-window.onload = function() {
+window.onload = function () {
     canvas = document.getElementById("Canvas");
     context = canvas.getContext("2d");
-    drawMaze("maze1.png", 148, 3);
+    drawMaze("maze1.png", 265, 5);
 
     window.onkeydown = processKey;
 
 };
 
-function drawMaze(mazeFile, startingX, startingY) {
-    clearTimeout(timer);
+function drawMaze(mazeFile, startinX, startingY) {
+    clearTimeout (timer);
 
     dx = 0;
     dy = 0;
 
     var imgMaze = new Image();
-    imgMaze.onload = function() {
+    imgMaze.onload = function () {
         canvas.width = imgMaze.width;
         canvas.height = imgMaze.height;
 
@@ -48,16 +48,16 @@ function processKey(e) {
     dy = 0;
 
     if (e.keyCode == 38) { //стрелка вверх - код 38, -1
-        dx = -1;
-    }
-    if (e.keyCode == 40) { //стрелка вниз - код 40, 1
-        dx = 1;
-    }
-    if (e.keyCode == 37) { //стрелка влево - код 37, -1
         dy = -1;
     }
-    if (e.keyCode == 39) { //стрелка вправо - код 39, 1
+    if (e.keyCode == 40) { //стрелка вниз - код 40, 1
         dy = 1;
+    }
+    if (e.keyCode == 37) { //стрелка влево - код 37, -1
+        dx = -1;
+    }
+    if (e.keyCode == 39) { //стрелка вправо - код 39, 1
+        dx = 1;
     }
 }
 

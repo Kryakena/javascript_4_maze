@@ -15,7 +15,7 @@ window.onload = function() {
     context = canvas.getContext("2d");
 
 
-    drawMaze("maze1.png", 265, 5);
+    drawMaze("maze1.png", 274, 5);
 
     window.onkeydown = processKey;
 
@@ -59,19 +59,19 @@ function processKey(e) {
 
 
 
-    if (e.keyCode === 38) { //стрелка вверх - код 38, -1
+    if (e.keyCode === 38) { //стрелка вверх - код 38
         dy = -3;
     }
 
-    if (e.keyCode === 40) { //стрелка вниз - код 40, 1
+    if (e.keyCode === 40) { //стрелка вниз - код 40
         dy = 3;
     }
 
-    if (e.keyCode === 37) { //стрелка влево - код 37, -1
+    if (e.keyCode === 37) { //стрелка влево - код 37
         dx = -3;
     }
 
-    if (e.keyCode === 39) { //стрелка вправо - код 39, 1
+    if (e.keyCode === 39) { //стрелка вправо - код 39
         dx = 3;
     }
 }
@@ -113,10 +113,6 @@ function checkCollision() {
         if (red == 0 && green == 0 && blue == 0) {
             return true;
         }
-        if (red == 169 && green == 169 && blue == 169) {
-            return true;
-        }
-
     }
     return false;
 }

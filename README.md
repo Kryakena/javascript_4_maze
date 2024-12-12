@@ -76,7 +76,7 @@ var context;
 	window.onload = function() {  
  	canvas = document.getElementById("Canvas");  
  	context = canvas.getContext("2d");  
- 	drawMaze("maze1.png", 148, 3);  
+ 	drawMaze("maze1.png", 274, 5);  
 	};  
   
 	function drawMaze(mazeFile, startingX, startingY) {
@@ -87,9 +87,9 @@ var context;
 	
 	```JavaScript
  	dx = 0;  
-    	dy = 0;  
+    dy = 0;  
 	  
-    	var imgMaze = new Image();  
+    var imgMaze = new Image();  
  	imgMaze.onload = function() {  
         canvas.width = imgMaze.width;  
         canvas.height = imgMaze.height;  
@@ -117,7 +117,7 @@ var context;
 	```JavaScript
 	var timer; 
 	clearTimeout(timer);  
-	timer = setTimeout("drawMaze()", 10);  
+	timer = setTimeout(redraw, 10);  
 	```
 
 8. делаем анимацию значка
@@ -134,6 +134,7 @@ var context;
 	function processKey(e) {  
  	dx = 0;  
 	dy = 0;
+ 	}
 	```
 	
 	- если нажата стрелка вверх, начинаем двигаться вверх 
@@ -144,100 +145,110 @@ var context;
 		```JavaScript
 		window.onkeydown = processKey;
 		
-		if (e.keyCode == 50) { //стрелка вверх - код 38  
-	 	dy = -1;  
-		}  
-		if (e.keyCode == 53) { //стрелка вниз - код 40  
-	    	dy = 1;  
-		}  
-		if (e.keyCode == 56) { //стрелка влево - код 37  
-	    	dx = -1;  
-		}  
-		if (e.keyCode == 59) { //стрелка вправо - код 39  
-	    	dx = 1;  
-		}
+        if (e.keyCode === 38) { //стрелка вверх - код 38 
+        		dy = -3;
+        }
+
+        if (e.keyCode === 40) { //стрелка вниз - код 40
+                dy = 3;
+        }
+
+        if (e.keyCode === 37) { //стрелка влево - код 37
+                dx = -3;
+        }
+
+        if (e.keyCode === 39) { //стрелка вправо - код 39
+                dx = 3;
+        }
 		```
 		
-9. отображаем изменения на холсте
-	- обновляем кадр только если значок движется
+   9. отображаем изменения на холсте
+       - обновляем кадр только если значок движется
 	
-	```JavaScript
-	x += dx;  
-	y += dy;
-	```
+       ```JavaScript
+       x += dx;  
+       y += dy;
+       ```
 	
-	- закрашиваем перемещение значка желтым цветом
+       - закрашиваем перемещение значка желтым цветом
 	
-	```JavaScript
-	function redraw() {  
-	    if (dx != 0 || dy != 0) {  
-	        context.beginPath();  
-	        context.fillStyle = "rgb(254, 244, 207)";  
-	        context.rect(x, y, 15, 15);  
-	        context.fill();  
-	    }
-	```
+       ```JavaScript
+       function redraw() {  
+           if (dx != 0 || dy != 0) {  
+               context.beginPath();  
+               context.fillStyle = "rgb(254, 244, 207)";  
+               context.rect(x, y, 15, 15);  
+               context.fill();
+               console.log(y + '-' + canvas.height);  
+           }
+        }
+       ```
 	
-	- обновляем координаты значка, создавая перемещение
+       - обновляем координаты значка, создавая перемещение
 	
-	```JavaScript
-	var imgFace = document.getElementById("face");  
-	context.drawImage(imgFace, x, y);
+       ```JavaScript
+       var imgFace = document.getElementById("face");  
+       context.drawImage(imgFace, x, y);
 	
-	timer = setTimeout("redraw()", 10);
-	```
+       timer = setTimeout(redraw, 10);
+       ```
 	
-	- проверка столкновения со стенками лабиринта
-		- создаем отдельную функцию
+       - проверка столкновения со стенками лабиринта
+           - создаем отдельную функцию
 		
-		```JavaScript
-		function checkCollisions() {}
-		```
+           ```JavaScript
+           function checkCollision() {}
+           ```
 		
-		- перебираем все пикселы и "узнаем" их цвет
+           - перебираем все пикселы и "узнаем" их цвет
 		
-		```JavaScript
-		var imgData = context.getImageData(x-1, y-1, 15+2, 15+2);  
-		var pixels = imgData.data;
-		```
+           ```JavaScript
+           var imgData = context.getImageData(x-1, y-1, 15+2, 15+2);  
+           var pixels = imgData.data;
+           ```
 		
-		- получаем данные для одного пиксела
+           - получаем данные для одного пиксела
 		
-		```JavaScript
-		for (var i = 0; n=pixels.length, i < n; i+=4) {  
-		    var red = pixels[i];  
-		    var green = pixels[i+1];  
-		    var blue = pixels[i+2];
-		```
+           ```JavaScript
+           for (var i = 0; n=pixels.length, i < n; i+=4) {  
+               var red = pixels[i];  
+               var green = pixels[i+1];  
+               var blue = pixels[i+2];
+             }
+           ```
 		
-		- смотрим на наличие черного цвета стены, что указывает на столкновение
+           - смотрим на наличие черного цвета стены, что указывает на столкновение
 		
-		```JavaScript
-		if (red == 0 && green == 0 && blue == 0) {  
-		        return true;  
-		    }      
-		return false;
-		```
+           ```JavaScript
+           if (red == 0 && green == 0 && blue == 0) {  
+                   return true;  
+           }      
+           return false;
+           ```
+
+           - если столкновения не было - продолжаем движение
 		
-		- смотрим на наличие серого цвета краев, что указывает на столкновение
-		
-		```JavaScript
-		if (red == 169 && green == 169 && blue == 169) {  
-		return true;  
-		}  
-		return false;
-		```
-		
-		- если столкновения не было - продолжаем движение
-		
-			```JavaScript
-			if (checkCollisions()){  
-			    x -= dy;  
-			    y -= dy;  
-			    dy = 0;  
-			    dx = 0;  
-			}
-			```
+               ```JavaScript
+               if (checkCollision()){  
+                   x -= dx;  
+                   y -= dy;  
+                   dy = 0;  
+                   dx = 0;  
+               }
+               ```
 			
-			- перерисовываем значок
-			- проверяем: дошел ли пользователь до финиша
+               - перерисовываем значок
+             
+	           ```JavaScript
+               var imgFace = document.getElementById("face");
+               context.drawImage(imgFace, x, y); //чтобы не создавалось много клонов значка при перемещении
+               ```
+               
+               - проверяем: дошел ли пользователь до финиша
+             
+               ```JavaScript
+               if (y>575) {
+                   alert("Ты победил! Молодец!");
+	            y = 5;
+	            }
+               ```

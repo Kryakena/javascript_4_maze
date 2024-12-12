@@ -7,8 +7,9 @@
     <list default="true" id="e15be89c-0034-433b-8c93-8eb003bb655e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Maze_JS.js" beforeDir="false" afterPath="$PROJECT_DIR$/Maze_JS.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/face.png" beforeDir="false" afterPath="$PROJECT_DIR$/face.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/maze1.png" beforeDir="false" afterPath="$PROJECT_DIR$/maze1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +39,9 @@
     &quot;accountId&quot;: &quot;6103d821-be42-4c97-bfba-d93c72e9af34&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -65,16 +69,29 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "npm.test.executor": "Run",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Maze_JS.js/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="npm.test" />
       </list>
     </recent_temporary>
   </component>
@@ -98,7 +115,8 @@
       <workItem from="1733578570681" duration="1536000" />
       <workItem from="1733676438142" duration="870000" />
       <workItem from="1733840644952" duration="3223000" />
-      <workItem from="1733945921300" duration="8168000" />
+      <workItem from="1733945921300" duration="8486000" />
+      <workItem from="1733983624466" duration="11733000" />
     </task>
     <servers />
   </component>

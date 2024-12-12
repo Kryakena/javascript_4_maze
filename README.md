@@ -6,22 +6,17 @@
 2. видео "Уроки по JavaScript. Делаем игру Лабиринт на Джаваскрипт (Часть 2)" https://vk.com/im?sel=19460369&z=video-101965347_456257146%2Fc77544a46b5d11490b%2Fpl_post_-11899736_41573
 
 
-![2024-12-07_16-47-25](https://github.com/user-attachments/assets/b02b48a6-625a-4cd9-9c9e-3251b1d11f7f)
+![2024-12-12_23-28-30](https://github.com/user-attachments/assets/ad606e25-352e-4c88-abb3-b491a33fe3fc) ![2024-12-12_23-27-23](https://github.com/user-attachments/assets/e0b84889-798f-4b0d-b89b-7cce2031e147)
 
+https://github.com/user-attachments/assets/8a01affb-5ce2-48ec-9f85-1130ef70eae6
 
-1. создаем HTML, CSS, JS документ
+1. создаем HTML, CSS, JS документ в программе "WebStorm" для работы с JavaScript (скачать бесплатную версию https://www.jetbrains.com/webstorm/)
 
-![2024-12-05_20-28-36](https://github.com/user-attachments/assets/e58db691-642d-4436-b12a-6f6c7efcc2b2)
-
-
-2. объявляем Canvas
-	- в файле index.html
+2. объявляем Canvas в файле index.html
 
 ```html
 <canvas id="Canvas"></canvas>
 ```
-
-![2024-12-05_20-35-34](https://github.com/user-attachments/assets/2f5cae01-4961-4756-bf2a-bf2b1218c309)
 
 3. пишем стиль для Canvas в виде рамочки в файле Maze_CSS.css
 
@@ -32,8 +27,6 @@ canvas{
 }
 ```
 
-![2024-12-05_20-32-43](https://github.com/user-attachments/assets/6817f953-d2a6-4b15-8ef7-5a1b2986a4c2)
-
 4. загружаем героя 
 
 - в файле index.html
@@ -41,9 +34,6 @@ canvas{
 ```html
 <img id="face" src="face.png">
 ```
-
-![2024-12-05_20-36-59](https://github.com/user-attachments/assets/24ab20a2-4ef5-47e5-b687-4a74e76e1bf4)
-
 
 - в файле Maze_CSS.css
 
@@ -53,17 +43,12 @@ img{
 }
 ```
 
-![2024-12-05_20-39-32](https://github.com/user-attachments/assets/86340ffa-07e1-4f10-a15f-be8c56c5ce9c)
-
-
 5. определяем глобальные переменные для холста и контекста в файле Maze_JS.js
 
 ```JavaScript
 var canvas;  
 var context;
 ```
-
-![2024-12-05_20-41-02](https://github.com/user-attachments/assets/efbf5da1-b12a-4950-90e0-307b74816906)
 
 6. готовим холст
 7. загружаем сам лабиринт - генерация лабиринта (https://mazegenerator.net/)
@@ -87,9 +72,9 @@ var context;
 	
 	```JavaScript
  	dx = 0;  
-    dy = 0;  
+        dy = 0;  
 	  
-    var imgMaze = new Image();  
+        var imgMaze = new Image();  
  	imgMaze.onload = function() {  
         canvas.width = imgMaze.width;  
         canvas.height = imgMaze.height;  
@@ -99,8 +84,7 @@ var context;
         x = startingX;  
         y = startingY;  
 	
-    };  
-    
+        };  
 	```
 	
 	- рисуем лабиринт и значок
@@ -120,7 +104,8 @@ var context;
 	timer = setTimeout(redraw, 10);  
 	```
 
-8. делаем анимацию значка
+8. делаем анимацию значка в файле Maze_JS.js
+   
 	- задаем начальную скорость перемещения значка
 	
 	```JavaScript
@@ -145,24 +130,25 @@ var context;
 		```JavaScript
 		window.onkeydown = processKey;
 		
-        if (e.keyCode === 38) { //стрелка вверх - код 38 
-        		dy = -3;
-        }
-
-        if (e.keyCode === 40) { //стрелка вниз - код 40
-                dy = 3;
-        }
-
-        if (e.keyCode === 37) { //стрелка влево - код 37
-                dx = -3;
-        }
-
-        if (e.keyCode === 39) { //стрелка вправо - код 39
-                dx = 3;
-        }
+	        if (e.keyCode === 38) { //стрелка вверх - код 38 
+	        	dy = -3;
+	        }
+	
+	        if (e.keyCode === 40) { //стрелка вниз - код 40
+	                dy = 3;
+	        }
+	
+	        if (e.keyCode === 37) { //стрелка влево - код 37
+	                dx = -3;
+	        }
+	
+	        if (e.keyCode === 39) { //стрелка вправо - код 39
+	                dx = 3;
+	        }
 		```
 		
-   9. отображаем изменения на холсте
+ 9. отображаем изменения на холсте
+     
        - обновляем кадр только если значок движется
 	
        ```JavaScript
@@ -194,6 +180,7 @@ var context;
        ```
 	
        - проверка столкновения со стенками лабиринта
+         
            - создаем отдельную функцию
 		
            ```JavaScript
@@ -214,7 +201,7 @@ var context;
                var red = pixels[i];  
                var green = pixels[i+1];  
                var blue = pixels[i+2];
-             }
+           }
            ```
 		
            - смотрим на наличие черного цвета стены, что указывает на столкновение
@@ -228,30 +215,31 @@ var context;
 
            - если столкновения не было - продолжаем движение
 		
-               ```JavaScript
-               if (checkCollision()){  
-                   x -= dx;  
-                   y -= dy;  
-                   dy = 0;  
-                   dx = 0;  
-               }
-               ```
+           ```JavaScript
+           if (checkCollision()){  
+           	x -= dx;  
+           	y -= dy;  
+
+           	dy = 0;  
+           	dx = 0;  
+           }
+           ```
 			
-               - перерисовываем значок
+           - перерисовываем значок
              
-	           ```JavaScript
-               var imgFace = document.getElementById("face");
-               context.drawImage(imgFace, x, y); //чтобы не создавалось много клонов значка при перемещении
-               ```
-               
-               - проверяем: дошел ли пользователь до финиша
+           ```JavaScript
+           var imgFace = document.getElementById("face");
+           context.drawImage(imgFace, x, y); //чтобы не создавалось много клонов значка при перемещении
+           ```
+    
+           - проверяем: дошел ли пользователь до финиша
              
-               ```JavaScript
-               if (y>575) {
-                   alert("Ты победил! Молодец!");
-	            y = 5;
-	            }
-               ```
+           ```JavaScript
+           if (y>575) {
+           alert("Ты победил! Молодец!");
+           y = 5;
+           }
+           ```
              
 # Весь код по файлам:
 
@@ -273,6 +261,7 @@ var context;
 </html>
 ```
 
+![2024-12-12_23-36-04](https://github.com/user-attachments/assets/3345c1c6-07ff-45a6-ab28-b65ba9a90e63)
 
 
 2. Maze_CSS.css
@@ -286,6 +275,10 @@ img{
     display: none;
 }
 ```
+
+![2024-12-12_23-36-34](https://github.com/user-attachments/assets/204554b1-566b-438f-ba24-a64c4357847a)
+
+
 3. Maze_JS.js
 
 ```JS
@@ -408,3 +401,8 @@ var pixels = imgData.data;
     return false;
 }
 ```
+
+![2024-12-12_23-36-58](https://github.com/user-attachments/assets/bfef0a61-88c8-42a0-9aa6-3ee760ae91f6)
+![2024-12-12_23-37-40](https://github.com/user-attachments/assets/0d6f1aa5-f904-4e33-9c1f-302f2e95e83a)
+![2024-12-12_23-38-09](https://github.com/user-attachments/assets/15e8455d-bb53-45a1-af37-f830ad91da45)
+
